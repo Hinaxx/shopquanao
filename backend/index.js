@@ -9,7 +9,8 @@ import orderRouter from './routes/orderRoutes.js';
 import uploadRouter from './routes/uploadRoutes.js';
 
 dotenv.config();
-const path = require('path');
+const app = express();
+
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
@@ -45,12 +46,7 @@ app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 
-const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
-});
-app.listen(port, () => {
-  console.log(`serve at http://localhost:${port}`);
 });
