@@ -45,8 +45,6 @@ app.get('*', (req, res) =>
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
-const path = require('path');
-const express = require('express');
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
