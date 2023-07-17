@@ -125,12 +125,8 @@ main {
 button.thumbnail {
   padding: 0;
 }
-.card-img,
-.card-img-bottom,
-.card-img-top {
-  width: 100%;
-  height: 400px;
-}
+
 .card-img-top-mini {
   width: 100%;
+  height: 400px;
 }
