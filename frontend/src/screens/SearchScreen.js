@@ -118,16 +118,14 @@ export default function SearchScreen() {
     fetchCategories();
   }, [dispatch]);
 
-  const getFilterUrl = (filter, skipPathname) => {
+  const getFilterUrl = (filter) => {
     const filterPage = filter.page || page;
     const filterCategory = filter.category || category;
     const filterQuery = filter.query || query;
     const filterRating = filter.rating || rating;
     const filterPrice = filter.price || price;
     const sortOrder = filter.order || order;
-    return `${
-      skipPathname ? '' : '/search?'
-    }category=${filterCategory}&query=${filterQuery}&price=${filterPrice}&rating=${filterRating}&order=${sortOrder}&page=${filterPage}`;
+    return `/search?category=${filterCategory}&query=${filterQuery}&price=${filterPrice}&rating=${filterRating}&order=${sortOrder}&page=${filterPage}`;
   };
   return (
     <div>
@@ -262,17 +260,17 @@ export default function SearchScreen() {
               </Row>
 
               <div>
-                {[...Array(pages).keys()].map((x) => (
+              {[...Array(pages).keys()].map((x) => (
                   <LinkContainer
                     key={x + 1}
                     className="mx-1"
                     to={{
-                      pathname: '/search',
-                      seacrh: getFilterUrl({ page: x + 1 }, true),
+                      pathname: "/search",
+                      search: getFilterUrl({ page: x + 1 }).substring(7),
                     }}
                   >
                     <Button
-                      className={Number(page) === x + 1 ? 'text-bold' : ''}
+                      className={Number(page) === x + 1 ? "text-bold" : ""}
                       variant="light"
                     >
                       {x + 1}
